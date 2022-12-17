@@ -8,7 +8,7 @@ export default function signin({ providers }) {
       <Header />
       <div className="flex justify-center space-x-7 mt-20">
         <img
-          className="hidden object-cover rotate-6 md:inline-flex md:w-48"
+          className="hidden object-cover rotate-12 md:inline-flex md:w-48"
           src="https://www.instagram-tags.com/img/howto_pic_insta.png"
           alt="instagram image"
         />
