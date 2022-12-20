@@ -7,10 +7,10 @@ export default function Posts() {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
-    const unsubscribe = onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (snapshot) => {
+    onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (snapshot) => {
       setPosts(snapshot.docs);
     });
-  }, []);
+  }, [db]);
   return (
     <div>
       {posts.map((post) => (

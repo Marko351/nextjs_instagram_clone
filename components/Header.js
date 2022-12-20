@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
 import { HomeIcon } from '@heroicons/react/24/solid';
@@ -7,8 +8,9 @@ import { useRecoilState } from 'recoil';
 import { modalState } from '../atom/modalAtom';
 
 export default function Header() {
+  const router = useRouter();
   const { data: session } = useSession();
-  const [open, setOpen] = useRecoilState(modalState);
+  const [_open, setOpen] = useRecoilState(modalState);
 
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-30">
@@ -19,10 +21,16 @@ export default function Header() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png?20160616034027"
             fill
             className="object-contain"
+            onClick={() => router.push('/')}
           />
         </div>
         <div className="cursor-pointer h-24 w-10 relative lg:hidden">
-          <Image src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" fill className="object-contain" />
+          <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
+            fill
+            className="object-contain"
+            onClick={() => router.push('/')}
+          />
         </div>
         {/* Middle */}
         <div className="relative mt-1">
@@ -38,7 +46,10 @@ export default function Header() {
 
         {/* Right */}
         <div className="flex space-x-4 items-center">
-          <HomeIcon className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
+          <HomeIcon
+            onClick={() => router.push('/')}
+            className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"
+          />
           {session ? (
             <>
               <PlusCircleIcon
